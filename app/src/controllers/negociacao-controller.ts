@@ -1,3 +1,4 @@
+import { NegociacoesDoDia } from './../interfaces/negociacao-do-dia.js';
 import { MensagemView } from '../views/mensagem-view.js';
 import { Negociacao } from "../models/negociacao.js";
 import { Negociacoes } from "../models/negociacoes.js";
@@ -45,7 +46,7 @@ export class NegociacaoController {
   public importaDados(): void {
     fetch('http://localhost:8080/dados')
       .then(res => res.json())
-      .then((dados: any[]) => {
+      .then((dados: NegociacoesDoDia[]) => {
         return dados.map(dadoDeHoje => {
           return new Negociacao(new Date(),
             dadoDeHoje.vezes,
